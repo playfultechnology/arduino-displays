@@ -13,5 +13,4 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/OLED91.jpg) | SSD1306 | OLED | 128x32  | I2C | https://github.com/lexus2k/lcdgfx |  |
 | ![](Images/OLED96.jpg) | SSD1306 | OLED | 128x64 | I2C | https://github.com/lexus2k/lcdgfx |  |
 | ![](Images/eInk.jpg) | e-Ink  | e-Ink | Variable | SPI | https://github.com/waveshare/e-Paper |  |
-| ![](Images/TFT.jpg) | Content Cell  | TFT | 240x400 | 8-bit parallel | https://github.com/prenticedavid/MCUFRIEND_kbv |  |
-| ![](Images/TFT.jpg) | ILI9486 | TFT | 3.5" 320x480 | 8-bit parallel | https://github.com/prenticedavid/MCUFRIEND_kbv |  |
+| ![](Images/tft.jpg) | ILI9486 | TFT | Variable | 8-bit parallel | https://github.com/prenticedavid/MCUFRIEND_kbv |  |
