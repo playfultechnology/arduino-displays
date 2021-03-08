@@ -31,5 +31,5 @@ It also comes packaged on various controller boards designed for 3D printers, wh
 
 ## ANet
 ![](Images/ANet.jpg)
-![](Wiring/ANet LCD12864 Wiring_bb.jpg) 
+![](Wiring/ANet LCD12864 Wiring_bb.jpg)
 
