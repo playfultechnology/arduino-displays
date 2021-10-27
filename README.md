@@ -31,5 +31,8 @@ It also comes packaged on various controller boards designed for 3D printers, wh
 
 ## ANet
 ![](Images/ANet.jpg)
-![](Wiring/ANet LCD12864 Wiring_bb.jpg)
+![](Wiring/ANet%20LCD12864%20Wiring_bb.jpg)
+
+## Rep Rap Discount Smart Controller
+![](Images/RepRapDiscountSmartContoller.jpg) 
 
