@@ -18,7 +18,7 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/OLED96.jpg) | SSD1306 | OLED | 128x64 | I2C | https://github.com/lexus2k/lcdgfx |  |
 | ![](Images/eInk.jpg) | e-Ink  | e-Ink | Variable | SPI | https://github.com/waveshare/e-Paper |  |
 | ![](Images/tft.jpg) | ILI9486 | TFT | Variable | 8-bit parallel | https://github.com/prenticedavid/MCUFRIEND_kbv |  |
-
+| ![](Images/HP5082-7405.jpg) | HP5082-74xx | GaAsP | 7-segment | 8-bit strobed | https://github.com/wayoda/LedControl |  |
 
 
 # ST7920
