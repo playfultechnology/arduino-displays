@@ -39,19 +39,6 @@ Note that there are also several variations in pinout - check the datasheet!
  - For displays of 0.56" or smaller, it's preferable to use a Common Cathode configuration, and driven by a LED multiplexer chip: MAX7219 (SPI) or HT16K33 (I2C)
  - For displays larger than that, it's preferable to use a Common Anode configuration, with an individual TPIC6B595 per digit to sink the segments.
 
-
-### FEM-1801L0BGW https://www.farnell.com/datasheets/99300.pdf
- - FEM The manufacturer code: Forge Europa
- - 180 Size in inches. Here, 1.80" i.e. a height of 46mm
- - 1 Common Cathode (2 is Common Anode)
- - L is Red 
-
-### FN1-0562B230SGW
- - FN1 The manufacturer code 
- - 056 Size in inches. Here, 0.56" i.e. a height of 14mm
- - 2 Common Anode
- - B is Blue 
-
 # ST7920
 ST7920 is a popular controller chip used to 128x64 LCD panels. In its simplest form, it can be controlled via either parallel or serial (SPI) interface (selectable via the PSB/NC pin). Since the board sends no data back to the controller, there is no MISO pin to connect for the SPI interface - just MOSI, CLK, and SS, along with 5V and GND for the display controller and also the backlight, and an optional reset pin.
 
