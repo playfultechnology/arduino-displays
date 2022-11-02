@@ -48,6 +48,7 @@ These are really nothing more than 10 coloured LEDs stacked on top of each other
  - Alternatively, you could use a shift register like a 74HC595 (though that can only sink 6mA, and only had 8 channels). 
  - Or, a LM3914 analog driver, which determines which segments to light from an analog input (take a PWM output from a GPIO pin and then smooth it through an RC circuit to feed the signal line input as described in https://forum.arduino.cc/t/low-pass-filter-for-pulse-width-modulation/498556).
  - Or, a multiplexing LED driver like a MAX7219 (64 LEDs via SPI) or HT16K33 (128 LEDs via I2C). These are somewhat overkill to only light 10 LEDs, but otherwise are perfectly designed for the job!
+ 
 The only last remaining problem is to get the correct polarity for the bar graph displays themselves. I have three, which are labelled:
  - 2510SR-1 (Red), _anodes_ are on the labelled side
  - B10Y (Orange), _anodes_ are on the labelled side
