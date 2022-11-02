@@ -20,6 +20,7 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/tft.jpg) | ILI9486 | TFT | Variable | 8-bit parallel | https://github.com/prenticedavid/MCUFRIEND_kbv | https://www.banggood.com/custlink/mvGEn5n5ds |
 | ![](Images/HP5082-7405.jpg) | HP5082-74xx | GaAsP | 7-segment | 8-bit strobed | https://github.com/wayoda/LedControl |  |
 | ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 | https://www.aliexpress.com/item/32621869484.html |
+| ![](Images/LEDbargraph.jpg) | LED Bargraph | LED | N/A | N/A | N/A | https://www.sparkfun.com/products/9935 |
 
 # 7-Segment Displays
 Here's a bunch of 7-segment displays from my parts drawer. It's *generally* possible to identify the size, colour, and CA/CC configuration from the model number, as shown below:
@@ -39,6 +40,18 @@ Note that there are also several variations in pinout - check the datasheet!
 
  - For displays of 0.56" or smaller, it's preferable to use a Common Cathode configuration, and driven by a LED multiplexer chip: MAX7219 (SPI) or HT16K33 (I2C)
  - For displays larger than that, it's preferable to use a Common Anode configuration, with an individual TPIC6B595 per digit to sink the segments.
+
+
+# 10-Segment Bargraph Displays
+These are really nothing more than 10 coloured LEDs stacked on top of each other - no driver circuitry, and no resistors. 
+ - They can be driven direct from GPIO pins (with appropriate resistor - they're only tiny LEDs, with 20mA If, so probably 330Ω - 1kΩ each). 
+ - Alternatively, you could use a shift register like a 74HC595 (though that can only sink 6mA, and only had 8 channels). 
+ - Or, a LM3914 analog driver, which determines which segments to light from an analog input (take a PWM output from a GPIO pin and then smooth it through an RC circuit to feed the signal line input as described in https://forum.arduino.cc/t/low-pass-filter-for-pulse-width-modulation/498556).
+ - Or, a multiplexing LED driver like a MAX7219 (64 LEDs via SPI) or HT16K33 (128 LEDs via I2C). These are somewhat overkill to only light 10 LEDs, but otherwise are perfectly designed for the job!
+The only last remaining problem is to get the correct polarity for the bar graph displays themselves. I have three, which are labelled:
+ - 2510SR-1 (Red), _anodes_ are on the labelled side
+ - B10Y (Orange), _anodes_ are on the labelled side
+ - 1025G (Green), _cathodes_ are on the labelled side!
 
 # ST7920
 ST7920 is a popular controller chip used to 128x64 LCD panels. In its simplest form, it can be controlled via either parallel or serial (SPI) interface (selectable via the PSB/NC pin). Since the board sends no data back to the controller, there is no MISO pin to connect for the SPI interface - just MOSI, CLK, and SS, along with 5V and GND for the display controller and also the backlight, and an optional reset pin.
