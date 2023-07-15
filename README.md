@@ -61,7 +61,6 @@ The only last remaining problem is to get the correct polarity for the bar graph
 # ST7920
 ST7920 is a popular controller chip used to 128x64 LCD panels. In its simplest form, it can be controlled via either parallel or serial (SPI) interface (selectable via the PSB/NC pin). Since the board sends no data back to the controller, there is no MISO pin to connect for the SPI interface - just MOSI, CLK, and SS, along with 5V and GND for the display controller and also the backlight, and an optional reset pin.
 
-
 It also comes packaged on various controller boards designed for 3D printers, which are convenient because they also have a rotary or joystick input, a button, and a buzzer on the same board. However, these are often badly-documented, and all have a slightly different pinouts. Two common varieties I've found are:
 
 ## Rep Rap Discount
@@ -71,6 +70,36 @@ It also comes packaged on various controller boards designed for 3D printers, wh
 ![](Images/ANet.jpg)
 ![](Wiring/ANet%20LCD12864%20Wiring_bb.jpg)
 
+# Character Displays
+Unlike the "full graphic" 128x64 pixel displays, these displays have fixed character blocks, typically either 2 rows of 16 characters (1602) or 4 rows of 20 characters (2004).
+In their "raw" form, they typically have a 16-pin single-line connector situated above the display, but only require 6 of those pins to be connected:
+As seen from the front:
+
+VSS - GND
+VDD - 5V
+VO
+RW - RW
+RW
+E - E
+D0
+D1
+D2
+D3
+D4 - D4 
+D5 - D5
+D6 - D6
+D7 - D7
+A
+K
+
+The display can be controlled using the LiquidCrystal library, with the constructor specifying the GPIO pins connected to those pins, as follows:
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
 ## Rep Rap Discount Smart Controller
 ![](Images/RepRapDiscountSmartController.jpg) 
+
+This combines the "raw" 2004 LCD display with a buzzer and rotary switch. It also has a particularly poorly-documented pinout.
+
+PCF8574 controllers
+
 
