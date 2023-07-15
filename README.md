@@ -96,7 +96,10 @@ The display can be controlled using the LiquidCrystal library, with the construc
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 ## Rep Rap Discount Smart Controller
-![](Images/RepRapDiscountSmartController.jpg) 
+![](Images/RepRapDiscountSmartController.jpg)
+
+![](Wiring/RepRepDiscount%20LCD2004_bb.jpg)
+
 
 This combines the "raw" 2004 LCD display with a buzzer and rotary switch. It also has a particularly poorly-documented pinout.
 
