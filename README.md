@@ -8,7 +8,7 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/TM1637.jpg) | TM1637 | 7-segment | 4-digit | <a href="https://green-possum-today.blogspot.com/2018/10/a-comparison-of-tm1637-protocol-with.html">Custom Serial (I2C variant)</a> | https://github.com/RobTillaart/TM1637_RT | https://www.banggood.com/custlink/GDD3zSq2qk |
 | ![](Images/MAX7219.jpg) | MAX7219 | 7-segment  | 8-digit | SPI | https://github.com/wayoda/LedControl |  |
 | ![](Images/MAX7219_matrix.jpg) | MAX7219 | 8x8 | 8x8 | SPI | https://github.com/wayoda/LedControl / https://github.com/MajicDesigns/MD_Parola | https://www.banggood.com/custlink/GDvKsgCMKm |
-| ![](Images/LCD1602.jpg) | HD44780 | LCD | 16x2 character (each char 5x8) | I2C (0x27 or 0x3F) | https://github.com/mathertel/LiquidCrystal_PCF8574 | https://www.banggood.com/custlink/vDKEsPbVKw |
+| ![](Images/LCD1602.jpg) | PCF8574 | LCD | 16x2 character (each char 5x8) | I2C (PCF8574A is 0x3F, PCF8574 is 0x27) | https://github.com/mathertel/LiquidCrystal_PCF8574 | https://www.banggood.com/custlink/vDKEsPbVKw |
 | ![](Images/LCD2004.jpg) | HD44780 | LCD  | 20x4 character (each char 5x8) | I2C | https://github.com/duinoWitchery/hd44780 Note DO NOT use the PCF library above - it cannot handle setCursor on 4 line displays correctly | https://www.banggood.com/custlink/mG3EO6066Y |
 | ![](Images/LCD12864.jpg) | [ST7920](#ST7920) (Identifiabale by pins labelled PSB/NC ) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/G3vY8zzr27 |
 | ![](Images/RepRapDiscount.jpg) | [ST7920 "RepRap Discount")](#ST7920) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/K33E9qkcUv |
@@ -50,14 +50,16 @@ These are really nothing more than 10 coloured LEDs stacked on top of each other
  - Or, a LM3914 analog driver, which determines which segments to light from an analog input (take a PWM output from a GPIO pin and then smooth it through an RC circuit to feed the signal line input as described in https://forum.arduino.cc/t/low-pass-filter-for-pulse-width-modulation/498556).
  - Or, a multiplexing LED driver like a MAX7219 (64 LEDs via SPI) or HT16K33 (128 LEDs via I2C). These are somewhat overkill to only light 10 LEDs, but otherwise are perfectly designed for the job!
  
-The only last remaining problem is to get the correct polarity for the bar graph displays themselves. I have three, which are labelled:
+The only last remaining problem is to get the correct polarity for the bar graph displays themselves. Here are how some of my bargraphs are labelled:
  - 2510SR-1 (Red), _anodes_ are on the labelled side
+ - B10R (Red), _anodes_ are on the labelled side
+ - B10B (Blue),  _anodes_ are on the labelled side 
  - B10Y (Orange), _anodes_ are on the labelled side
  - 1025G (Green), _cathodes_ are on the labelled side!
+ - HSN-2510BG (Green), _anodes_ are on the labelled side
 
 # ST7920
 ST7920 is a popular controller chip used to 128x64 LCD panels. In its simplest form, it can be controlled via either parallel or serial (SPI) interface (selectable via the PSB/NC pin). Since the board sends no data back to the controller, there is no MISO pin to connect for the SPI interface - just MOSI, CLK, and SS, along with 5V and GND for the display controller and also the backlight, and an optional reset pin.
-
 
 It also comes packaged on various controller boards designed for 3D printers, which are convenient because they also have a rotary or joystick input, a button, and a buzzer on the same board. However, these are often badly-documented, and all have a slightly different pinouts. Two common varieties I've found are:
 
@@ -68,6 +70,36 @@ It also comes packaged on various controller boards designed for 3D printers, wh
 ![](Images/ANet.jpg)
 ![](Wiring/ANet%20LCD12864%20Wiring_bb.jpg)
 
+# Character Displays
+Unlike the "full graphic" 128x64 pixel displays, these displays have fixed character blocks, typically either 2 rows of 16 characters (1602) or 4 rows of 20 characters (2004).
+In their "raw" form, they typically have a 16-pin single-line connector situated above the display, but only require 6 of those pins to be connected:
+As seen from the front:
+
+VSS - GND
+VDD - 5V
+VO
+RW - RW
+RW
+E - E
+D0
+D1
+D2
+D3
+D4 - D4 
+D5 - D5
+D6 - D6
+D7 - D7
+A
+K
+
+The display can be controlled using the LiquidCrystal library, with the constructor specifying the GPIO pins connected to those pins, as follows:
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
 ## Rep Rap Discount Smart Controller
 ![](Images/RepRapDiscountSmartController.jpg) 
+
+This combines the "raw" 2004 LCD display with a buzzer and rotary switch. It also has a particularly poorly-documented pinout.
+
+PCF8574 controllers
+
 
