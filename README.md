@@ -22,6 +22,10 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 | https://www.aliexpress.com/item/32621869484.html |
 | ![](Images/LEDbargraph.jpg) | LED Bargraph | LED | N/A | N/A | N/A | https://www.sparkfun.com/products/9935 |
 
+# MAX7219 Matrix
+LedControl library _might_ work, but only on certain hardware configurations. MD_MAX72xx is more flexible. Most cheap eBay boards etc. require MD_MAX72XX::FC16_HW.
+Also note that data input is on the right hand side!
+
 # 7-Segment Displays
 Here's a bunch of 7-segment displays from my parts drawer. It's *generally* possible to identify the size, colour, and CA/CC configuration from the model number, as shown below:
 
