@@ -59,7 +59,11 @@ The only last remaining problem is to get the correct polarity for the bar graph
  - HSN-2510BG (Green), _anodes_ are on the labelled side
 
 # ST7920
-ST7920 is a popular controller chip used to 128x64 LCD panels. In its simplest form, it can be controlled via either parallel or serial (SPI) interface (selectable via the PSB/NC pin). Since the board sends no data back to the controller, there is no MISO pin to connect for the SPI interface - just MOSI, CLK, and SS, along with 5V and GND for the display controller and also the backlight, and an optional reset pin.
+The Sitronix ST7920 chip is a popular controller chip used to 128x64 LCD panels. It can be controlled via either parallel or serial (SPI) interface (selectable via the PSB/NC pin), but serial is significantly easier to implement! Since the board sends no data back to the controller, there is no need for a MISO pin to connect for the SPI interface - just MOSI, CLK, and SS, along with 5V and GND for the display controller and also the backlight, and an optional reset pin.
+
+The ST7920 chip itself will operate at 3.3V logic, BUT the crystals require at least 4.5V on Vdd to activate. However, the SPI lines can be run from an ESP32 or other 3.3V microprocessor just fine without the need for any level conversion.
+
+![](Wiring/LCD12864%20Wiring_bb.jpg)
 
 It also comes packaged on various controller boards designed for 3D printers, which are convenient because they also have a rotary or joystick input, a button, and a buzzer on the same board. However, these are often badly-documented, and all have a slightly different pinouts. Two common varieties I've found are:
 
