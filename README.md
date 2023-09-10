@@ -120,6 +120,21 @@ Data pins D0-D3 are not connected. Instead, a single byte of data is shifted in 
 The display can be controlled using the LiquidCrystal library, with the constructor specifying the GPIO pins connected to those pins, as follows:
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
+### I2C Backpack
+One very common modification to these displays is the addition of a PCF8574 I2C port expander, which allows the LCD to be address via only two I2C pins - SDA and SCK, together with 5V and GND.
+Commands sent to the PCF8574 set the state of its 8 GPIO pins, typically wired as follows to the LCD (see https://github.com/mathertel/LiquidCrystal_PCF8574/blob/master/src/LiquidCrystal_PCF8574.cpp):
+
+| PCF8574 | HD44780 |
+| --- | --- |
+| P0 | RS |
+| P1 | - |
+| P2 | E |
+| P3 | - |
+| P4 | D4 |
+| P5 | D5 |
+| P6 | D6 |
+| P7 | D7 |
+
 ## Rep Rap Discount Smart Controller
 ![](Images/RepRapDiscountSmartController.jpg)
 
