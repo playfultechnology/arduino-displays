@@ -92,31 +92,30 @@ The disadvantage is that it requires 8 data lines to be connected, allowing all 
 So, basically, there is never any reason to use 8-bit mode.
 
 ### 4-bit Parallel Mode
-This is the mode you will almost always see used. It requires 4 data pins and 3 control pins, as follows:
+This is the mode you will almost always see used. It requires 4 data pins and 3 (or, generally, only 2) control pins, as follows:
 
 | Label | Function |
 |--- |--- |
 | VSS | GND |
 | VDD | 5V <sup>*</sup> |
-| VO | |
-| RW | RW |
-| E | E |
+| VO | Voltage offset for contrast adjustment. Varies from GND to VCC. |
+| RS | Register Select. When RS is LOW, data is treated as a command; when RS is HIGH, data is treated as character data. |
+| RW | Read/Write. When LOW data, data is sent to the board; when HIGH, data is read from the board. Can generally be tied to GND. |
+| E | Enable. Pulsed from LOW to HIGH to initiate data transfer. |
 | D0 | - |
 | D1 | - |
 | D2 | - |
 | D3 | - |
-| D4 | D4 |
-| D5 | D5 |
-| D6 | D6 |
-| D7 | D7 |
-| A |
-| K |
+| D4 | Data4 |
+| D5 | Data5 |
+| D6 | Data6 |
+| D7 | Data7 |
+| A | Backlight Anode (+ve) |
+| K | Backlight Cathode (-ve) |
 
 <sup>*</sup>  Although the specifications for the HD44780 states that the IC can run as low as 2.7V, it is the output of the HD44780 IC to the LCD panel that becomes the problem. This is where low or no contrast becomes an issue at 3.3V.
 
-There
-
-
+Data pins D0-D3 are not connected. Instead, a single byte of data is shifted in two 4-bit nibbles, re-using the D4-D7 pins each time.
 
 The display can be controlled using the LiquidCrystal library, with the constructor specifying the GPIO pins connected to those pins, as follows:
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
@@ -126,8 +125,10 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 ![](Wiring/RepRepDiscount%20LCD2004_bb.jpg)
 
-
 This combines the "raw" 2004 LCD display with a buzzer and rotary switch. It also has a particularly poorly-documented pinout.
+
+The RW of the LCD display is tied to GND.
+
 
 PCF8574 controllers
 
