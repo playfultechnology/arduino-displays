@@ -71,7 +71,7 @@ The ST7920 chip itself will operate at 3.3V logic, BUT the crystals require at l
 
 It also comes packaged on various controller boards designed for 3D printers, which are convenient because they also have a rotary or joystick input, a button, and a buzzer on the same board. However, these are often badly-documented, and all have a slightly different pinouts. Two common varieties I've found are:
 
-## Rep Rap Discount
+## Rep Rap Discount "Full Graphic" Controller
 ![](Images/RepRapDiscount.jpg) 
 
 ## ANet
@@ -136,6 +136,7 @@ Commands sent to the PCF8574 set the state of its 8 GPIO pins, typically wired a
 | P7 | D7 |
 
 ## Rep Rap Discount Smart Controller
+See schematic at https://reprap.org/mediawiki/images/7/70/Controller_final_reprapdiscount.pdf
 ![](Images/RepRapDiscountSmartController.jpg)
 
 ![](Wiring/RepRepDiscount%20LCD2004_bb.jpg)
