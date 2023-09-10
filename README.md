@@ -80,25 +80,43 @@ It also comes packaged on various controller boards designed for 3D printers, wh
 
 # Character Displays
 Unlike the "full graphic" 128x64 pixel displays, these displays have fixed character blocks, typically either 2 rows of 16 characters (1602) or 4 rows of 20 characters (2004).
-In their "raw" form, they typically have a 16-pin single-line connector situated above the display, but only require 6 of those pins to be connected:
-As seen from the front:
+In their "raw" form, they typically use a Hitachi HD44780 controller which has a 16-pin single-line connector situated above the display, however, not all of those pins need to be connected, depending on the mode used.
 
-VSS - GND
-VDD - 5V
-VO
-RW - RW
-RW
-E - E
-D0
-D1
-D2
-D3
-D4 - D4 
-D5 - D5
-D6 - D6
-D7 - D7
-A
-K
+### 8-bit Parallel Mode
+This is the fastest mode (in terms of _data transfer_ rate, at least), and also the most robust. 
+The disadvantage is that it requires 8 data lines to be connected, allowing all 8 bits of a single byte character to be read on one pass.  (representing the 8 bits of each character sent). Also, in practice, there is little speed advantage over the 4-bit parallel mode, since the limiting factor is the refresh rate of the LCD screen rather than the rate at which data is transferred anyway.  
+
+ - Yes, you could use a shift register (i.e. a pair of 74HC595's) to control all 8 data pins, but then you're defeating the benefit of parallelism, since you have to load the shift registers serially one bit at a time (SIPO, remember..) 
+ - You could also use a port expander (e.g. a MCP23S17), but then you are limited by the speed of the interface to the chip (i.e. you I2C or SPI bus speed), and also have to send additional bytes of information to set the control registers for the chips together with each item of data sent, which outweighs any performance gain.
+
+So, basically, there is never any reason to use 8-bit mode.
+
+### 4-bit Parallel Mode
+This is the mode you will almost always see used. It requires 4 data pins and 3 control pins, as follows:
+
+| Label | Function |
+|--- |--- |
+| VSS | GND |
+| VDD | 5V <sup>*</sup> |
+| VO | |
+| RW | RW |
+| E | E |
+| D0 | - |
+| D1 | - |
+| D2 | - |
+| D3 | - |
+| D4 | D4 |
+| D5 | D5 |
+| D6 | D6 |
+| D7 | D7 |
+| A |
+| K |
+
+<sup>*</sup>  Although the specifications for the HD44780 states that the IC can run as low as 2.7V, it is the output of the HD44780 IC to the LCD panel that becomes the problem. This is where low or no contrast becomes an issue at 3.3V.
+
+There
+
+
 
 The display can be controlled using the LiquidCrystal library, with the constructor specifying the GPIO pins connected to those pins, as follows:
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
