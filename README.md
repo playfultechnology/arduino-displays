@@ -65,7 +65,10 @@ The only last remaining problem is to get the correct polarity for the bar graph
 # ST7920
 The Sitronix ST7920 chip is a popular controller chip used to 128x64 LCD panels. It can be controlled via either parallel or serial (SPI) interface (selectable via the PSB/NC pin), but serial is significantly easier to implement! Since the board sends no data back to the controller, there is no need for a MISO pin to connect for the SPI interface - just MOSI, CLK, and SS, along with 5V and GND for the display controller and also the backlight, and an optional reset pin.
 
-The ST7920 chip itself will operate at 3.3V logic, BUT the crystals require at least 4.5V on Vdd to activate. However, the SPI lines can be run from an ESP32 or other 3.3V microprocessor just fine without the need for any level conversion.
+You can't share ST7920 with other SPI devices on the HW SPI bus, so you may as well use software serial SW SPI (bit-banging) (See https://forum.arduino.cc/t/u8glib2-issues-with-st7920-128-64-with-arduino-mega/691999/3)
+
+According to the <a href="https://www.waveshare.com/datasheet/LCD_en_PDF/ST7920.pdf>datasheet</a> (see table p33/42), the ST7920 requires a HIGH signal to be 0.7*VDD. 
+Empirically, the ST7920 chip itself will operate at 3.3V logic, BUT the crystals require at least 4.5V on Vdd to activate. However, the SPI lines can be run from an ESP32 or other 3.3V microprocessor just fine without the need for any level conversion.
 
 ![](Wiring/LCD12864%20Wiring_bb.jpg)
 
