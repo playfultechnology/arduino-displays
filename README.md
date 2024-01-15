@@ -21,6 +21,9 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/HP5082-7405.jpg) | HP5082-74xx | GaAsP | 7-segment | 8-bit strobed | https://github.com/wayoda/LedControl |  |
 | ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 | https://www.aliexpress.com/item/32621869484.html |
 | ![](Images/LEDbargraph.jpg) | LED Bargraph | LED | N/A | N/A | N/A | https://www.sparkfun.com/products/9935 |
+| ![]  | 0.49" SSD1306 | OLED | 64x32 | I2C | https://github.com/olikraus/u8g2 (using U8G2_SSD1306_64X32_1F_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);  constructor) | [https://www.aliexpress.com/item/32621869484.html](https://www.aliexpress.com/item/1005003874700775.html) |
+
+
 
 # MAX7219 Matrix
 LedControl library _might_ work, but only on certain hardware configurations. MD_MAX72xx is more flexible. Most cheap eBay boards etc. require MD_MAX72XX::FC16_HW.
