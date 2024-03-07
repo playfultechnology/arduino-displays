@@ -126,6 +126,11 @@ Data pins D0-D3 are not connected. Instead, a single byte of data is shifted in 
 The display can be controlled using the LiquidCrystal library, with the constructor specifying the GPIO pins connected to those pins, as follows:
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
+### Nokia LCD
+The Nokia 5110 LCD is an 84x48 LCD using the PCD8544 controller chip. It requires 3.3V logic, and can be wired to an ESP32 using a minimum of 4 wires - SCK, CE, DIN, and DC. To enable hardware reset, also requires RST, and for backlight dimming, BL, but these can optionally be tied to a 3.3V source (via 10k and 220ohm resistors, respectively) if they don't need to be separately controlled.
+
+![](https://github.com/playfultechnology/arduino-displays/blob/master/Images/Schematic_Nokia-5110-84x48-LCD.png)
+
 ### I2C Backpack
 One very common modification to these displays is the addition of a PCF8574 I2C port expander, which allows the LCD to be address via only two I2C pins - SDA and SCK, together with 5V and GND.
 Commands sent to the PCF8574 set the state of its 8 GPIO pins, typically wired as follows to the LCD (see https://github.com/mathertel/LiquidCrystal_PCF8574/blob/master/src/LiquidCrystal_PCF8574.cpp):
