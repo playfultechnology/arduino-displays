@@ -46,8 +46,8 @@ Here's a bunch of 7-segment displays from my parts drawer. It's *generally* poss
 
 Note that there are also several variations in pinout - check the datasheet!
 
- - For displays of 0.56" or smaller, it's preferable to use a Common Cathode configuration, and driven by a LED multiplexer chip: MAX7219 (SPI) or HT16K33 (I2C)
- - For displays larger than that, it's preferable to use a Common Anode configuration, with an individual TPIC6B595 per digit to sink the segments.
+ - For smaller, lower voltage displays (typically 0.56" or smaller), it's preferable to use a Common Cathode configuration, and driven by a LED multiplexer chip: MAX7219 (SPI) or HT16K33 (I2C). Note that these cannot supply enough power for larger displays, that typically have multiple LEDs per segment. For those, you can use a UDN2981 on the high side and ULN2803 on the low side. 
+ - For displays larger than that, it's preferable to use a Common Anode configuration, and an individual TPIC6B595 per digit to sink the segments. This is *not* multiplexed, so can provide constant 5V.
 
 
 # 10-Segment Bargraph Displays
