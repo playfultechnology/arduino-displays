@@ -16,7 +16,7 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/ANet.jpg) | [ST7920 ("ANet")](#ST7920) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/3KGYiMkCzy |
 | ![](Images/OLED91.jpg) | SSD1306 | OLED | 128x32  | I2C | https://github.com/lexus2k/lcdgfx | https://www.banggood.com/custlink/v3KEAtAPYE |
 | ![](Images/OLED96.jpg) | SSD1306 | OLED | 128x64 | I2C | https://github.com/lexus2k/lcdgfx | https://www.banggood.com/custlink/GG3yNFn5Rp |
-| ![](Images/eInk.jpg) | e-Ink  | e-Ink | Variable | SPI | https://github.com/waveshare/e-Paper | https://www.banggood.com/custlink/33vdN5b5yj |
+| ![](Images/eInk.jpg) | e-Ink  | e-Ink | Variable | SPI | https://github.com/ZinggJM/GxEPD2 /r/n https://github.com/waveshare/e-Paper | https://www.banggood.com/custlink/33vdN5b5yj |
 | ![](Images/tft.jpg) | ILI9486 | TFT | Variable | 8-bit parallel | https://github.com/prenticedavid/MCUFRIEND_kbv | https://www.banggood.com/custlink/mvGEn5n5ds |
 | ![](Images/HP5082-7405.jpg) | HP5082-74xx | GaAsP | 7-segment | 8-bit strobed | https://github.com/wayoda/LedControl |  |
 | ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 or https://github.com/olikraus/u8g2 (using constructor U8G2_PCD8544_84X48_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 25, /* data=*/ 26, /* cs=*/ 12, /* dc=*/ 27, /* reset=*/ 14);  // Nokia 5110 Display)| https://www.aliexpress.com/item/32621869484.html |
