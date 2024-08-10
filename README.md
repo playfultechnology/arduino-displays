@@ -22,7 +22,7 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 or https://github.com/olikraus/u8g2 (using constructor U8G2_PCD8544_84X48_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 25, /* data=*/ 26, /* cs=*/ 12, /* dc=*/ 27, /* reset=*/ 14);  // Nokia 5110 Display)| https://www.aliexpress.com/item/32621869484.html |
 | ![](Images/LEDbargraph.jpg) | LED Bargraph | LED | N/A | N/A | N/A | https://www.sparkfun.com/products/9935 |
 | ![]  | 0.49" SSD1306 | OLED | 64x32 | I2C | https://github.com/olikraus/u8g2 (using U8G2_SSD1306_64X32_1F_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);  constructor) | [https://www.aliexpress.com/item/32621869484.html](https://www.aliexpress.com/item/1005003874700775.html) |
-
+| ![]  | 1.3" ST7789 | TFT | 240x240 | SPI | https://github.com/Bodmer/TFT_eSPI | https://www.aliexpress.com/item/1005006532468602.html |
 
 
 # MAX7219 Matrix
