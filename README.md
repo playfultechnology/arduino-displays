@@ -10,19 +10,19 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/MAX7219_matrix.jpg) | MAX7219 | 8x8 | 8x8 | Serial (but note: cannot share an SPI interface!) | https://github.com/MajicDesigns/MD_MAX72XX (can be extended with https://github.com/MajicDesigns/MD_Parola ) | https://www.banggood.com/custlink/GDvKsgCMKm |
 | ![](Images/LCD1602.jpg) | PCF8574 | LCD | 16x2 character (each char 5x8) | I2C (PCF8574A is 0x3F, PCF8574 is 0x27) | https://github.com/mathertel/LiquidCrystal_PCF8574 | https://www.banggood.com/custlink/vDKEsPbVKw |
 | ![](Images/LCD2004.jpg) | HD44780 | LCD  | 20x4 character (each char 5x8) | I2C | https://github.com/duinoWitchery/hd44780 Note DO NOT use the PCF library above - it cannot handle setCursor on 4 line displays correctly | https://www.banggood.com/custlink/mG3EO6066Y |
-| ![](Images/LCD12864.jpg) | [ST7920](#ST7920) (Identifiabale by pins labelled PSB/NC ) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/G3vY8zzr27 |
+| ![](Images/LCD12864.jpg) | [ST7920](#ST7920) (Identifiable by pins labelled PSB/NC ) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/G3vY8zzr27 |
 | ![](Images/RepRapDiscount.jpg) | [ST7920 "RepRap Discount")](#ST7920) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/K33E9qkcUv |
 | ![](Images/RepRapDiscountSmartController.jpg) | [ST7920 "RepRap Discount Smart Controller")] | LCD | 20x4 character | SPI | LiquidCrystal | https://www.banggood.com/custlink/mGvd428bCG |
 | ![](Images/ANet.jpg) | [ST7920 ("ANet")](#ST7920) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/3KGYiMkCzy |
 | ![](Images/OLED91.jpg) | SSD1306 | OLED | 128x32  | I2C | https://github.com/lexus2k/lcdgfx | https://www.banggood.com/custlink/v3KEAtAPYE |
 | ![](Images/OLED96.jpg) | SSD1306 | OLED | 128x64 | I2C | https://github.com/lexus2k/lcdgfx | https://www.banggood.com/custlink/GG3yNFn5Rp |
-| ![](Images/eInk.jpg) | e-Ink  | e-Ink | Variable | SPI | https://github.com/waveshare/e-Paper | https://www.banggood.com/custlink/33vdN5b5yj |
+| ![](Images/eInk.jpg) | e-Ink  | e-Ink | Variable | SPI | https://github.com/ZinggJM/GxEPD2 or https://github.com/waveshare/e-Paper | https://www.banggood.com/custlink/33vdN5b5yj |
 | ![](Images/tft.jpg) | ILI9486 | TFT | Variable | 8-bit parallel | https://github.com/prenticedavid/MCUFRIEND_kbv | https://www.banggood.com/custlink/mvGEn5n5ds |
 | ![](Images/HP5082-7405.jpg) | HP5082-74xx | GaAsP | 7-segment | 8-bit strobed | https://github.com/wayoda/LedControl |  |
-| ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 | https://www.aliexpress.com/item/32621869484.html |
+| ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 or https://github.com/olikraus/u8g2 (using constructor U8G2_PCD8544_84X48_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 25, /* data=*/ 26, /* cs=*/ 12, /* dc=*/ 27, /* reset=*/ 14);  // Nokia 5110 Display)| https://www.aliexpress.com/item/32621869484.html |
 | ![](Images/LEDbargraph.jpg) | LED Bargraph | LED | N/A | N/A | N/A | https://www.sparkfun.com/products/9935 |
 | ![]  | 0.49" SSD1306 | OLED | 64x32 | I2C | https://github.com/olikraus/u8g2 (using U8G2_SSD1306_64X32_1F_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);  constructor) | [https://www.aliexpress.com/item/32621869484.html](https://www.aliexpress.com/item/1005003874700775.html) |
-
+| ![]  | 1.3" ST7789 | TFT | 240x240 | SPI | https://github.com/Bodmer/TFT_eSPI | https://www.aliexpress.com/item/1005006532468602.html |
 
 
 # MAX7219 Matrix
@@ -46,8 +46,8 @@ Here's a bunch of 7-segment displays from my parts drawer. It's *generally* poss
 
 Note that there are also several variations in pinout - check the datasheet!
 
- - For displays of 0.56" or smaller, it's preferable to use a Common Cathode configuration, and driven by a LED multiplexer chip: MAX7219 (SPI) or HT16K33 (I2C)
- - For displays larger than that, it's preferable to use a Common Anode configuration, with an individual TPIC6B595 per digit to sink the segments.
+ - For smaller, lower voltage displays (typically 0.56" or smaller), it's preferable to use a Common Cathode configuration, and driven by a LED multiplexer chip: MAX7219 (SPI) or HT16K33 (I2C). Note that these cannot supply enough power for larger displays, that typically have multiple LEDs per segment. For those, you can use a UDN2981 on the high side and ULN2803 on the low side. 
+ - For displays larger than that, it's preferable to use a Common Anode configuration, and an individual TPIC6B595 per digit to sink the segments. This is *not* multiplexed, so can provide constant 5V.
 
 
 # 10-Segment Bargraph Displays
@@ -125,6 +125,11 @@ Data pins D0-D3 are not connected. Instead, a single byte of data is shifted in 
 
 The display can be controlled using the LiquidCrystal library, with the constructor specifying the GPIO pins connected to those pins, as follows:
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+### Nokia LCD
+The Nokia 5110 LCD is an 84x48 LCD using the PCD8544 controller chip. It requires 3.3V logic, and can be wired to an ESP32 using a minimum of 4 wires - SCK, CE, DIN, and DC. To enable hardware reset, also requires RST, and for backlight dimming, BL, but these can optionally be tied to a 3.3V source (via 10k and 220ohm resistors, respectively) if they don't need to be separately controlled.
+
+![](https://github.com/playfultechnology/arduino-displays/blob/master/Images/Schematic_Nokia-5110-84x48-LCD.png)
 
 ### I2C Backpack
 One very common modification to these displays is the addition of a PCF8574 I2C port expander, which allows the LCD to be address via only two I2C pins - SDA and SCK, together with 5V and GND.
