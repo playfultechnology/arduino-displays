@@ -5,7 +5,7 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 
 | Image | Chipset  | Voltage | Type | Resolution  | Interface | Code  | Purchase |
 | -------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| ![](Images/TM1637.jpg) | TM1637 | 7-segment | 4-digit | <a href="https://green-possum-today.blogspot.com/2018/10/a-comparison-of-tm1637-protocol-with.html">Custom Serial (I2C variant)</a> | https://github.com/RobTillaart/TM1637_RT | https://www.banggood.com/custlink/GDD3zSq2qk |
+| ![](Images/TM1637.jpg) | TM1637 | 3.3V / 5V | 7-segment | 4-digit | <a href="https://green-possum-today.blogspot.com/2018/10/a-comparison-of-tm1637-protocol-with.html">Custom Serial (I2C variant)</a> | https://github.com/RobTillaart/TM1637_RT | https://www.banggood.com/custlink/GDD3zSq2qk |
 | ![](Images/MAX7219.jpg) | MAX7219 | 5V | 7-segment  | 8-digit | Serial (similar to, but not quite SPI!) | https://github.com/wayoda/LedControl |  |
 | ![](Images/MAX7219_matrix.jpg) | MAX7219 | 5V | 8x8 | 8x8 | Serial (but note: cannot share an SPI interface!) | https://github.com/MajicDesigns/MD_MAX72XX (can be extended with https://github.com/MajicDesigns/MD_Parola ) | https://www.banggood.com/custlink/GDvKsgCMKm |
 | ![](Images/LCD1602.jpg) | PCF8574 | ? | LCD | 16x2 character (each char 5x8) | I2C (PCF8574A is 0x3F, PCF8574 is 0x27) | https://github.com/mathertel/LiquidCrystal_PCF8574 | https://www.banggood.com/custlink/vDKEsPbVKw |
@@ -19,9 +19,9 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/OLED049.jpg)  | 0.49" SSD1306 | 3.3V | OLED | 64x32 | I2C | https://github.com/olikraus/u8g2 (using U8G2_SSD1306_64X32_1F_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);  constructor) | https://www.aliexpress.com/item/1005003874700775.html |
 | ![](Images/eInk.jpg) | e-Ink  | 3.3V | e-Ink | Variable | SPI | https://github.com/ZinggJM/GxEPD2 or https://github.com/waveshare/e-Paper | https://www.banggood.com/custlink/33vdN5b5yj |
 | ![](Images/tft.jpg) | ILI9486 | TFT | Variable | 8-bit parallel | https://github.com/prenticedavid/MCUFRIEND_kbv | https://www.banggood.com/custlink/mvGEn5n5ds |
-| ![](Images/HP5082-7405.jpg) | ? | HP5082-74xx | GaAsP | 7-segment | 8-bit strobed | https://github.com/wayoda/LedControl |  |
+| ![](Images/HP5082-7405.jpg) | HP5082-74xx  | ? | GaAsP | 7-segment | 8-bit strobed | https://github.com/wayoda/LedControl |  |
 | ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | 3.3V | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 or https://github.com/olikraus/u8g2 (using constructor U8G2_PCD8544_84X48_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 25, /* data=*/ 26, /* cs=*/ 12, /* dc=*/ 27, /* reset=*/ 14);  // Nokia 5110 Display)| https://www.aliexpress.com/item/32621869484.html |
-| ![](Images/LEDbargraph.jpg) | ?V | LED Bargraph | LED | N/A | N/A | N/A | https://www.sparkfun.com/products/9935 |
+| ![](Images/LEDbargraph.jpg) | LED Bargraph | ?V | LED | N/A | N/A | N/A | https://www.sparkfun.com/products/9935 |
 | ![](Images/TFT_13.jpg)  | 1.3" ST7789 | 3.3/5V | TFT | 240x240 | SPI | https://github.com/Bodmer/TFT_eSPI | https://www.aliexpress.com/item/1005006532468602.html |
 
 
