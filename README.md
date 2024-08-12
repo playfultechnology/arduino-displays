@@ -3,26 +3,26 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 
 
 
-| Image | Chipset  | Type | Resolution  | Interface | Code  | Purchase |
-| -------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Image | Chipset  | Voltage | Type | Resolution  | Interface | Code  | Purchase |
+| -------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | ![](Images/TM1637.jpg) | TM1637 | 7-segment | 4-digit | <a href="https://green-possum-today.blogspot.com/2018/10/a-comparison-of-tm1637-protocol-with.html">Custom Serial (I2C variant)</a> | https://github.com/RobTillaart/TM1637_RT | https://www.banggood.com/custlink/GDD3zSq2qk |
-| ![](Images/MAX7219.jpg) | MAX7219 | 7-segment  | 8-digit | Serial (similar to, but not quite SPI!) | https://github.com/wayoda/LedControl |  |
-| ![](Images/MAX7219_matrix.jpg) | MAX7219 | 8x8 | 8x8 | Serial (but note: cannot share an SPI interface!) | https://github.com/MajicDesigns/MD_MAX72XX (can be extended with https://github.com/MajicDesigns/MD_Parola ) | https://www.banggood.com/custlink/GDvKsgCMKm |
-| ![](Images/LCD1602.jpg) | PCF8574 | LCD | 16x2 character (each char 5x8) | I2C (PCF8574A is 0x3F, PCF8574 is 0x27) | https://github.com/mathertel/LiquidCrystal_PCF8574 | https://www.banggood.com/custlink/vDKEsPbVKw |
-| ![](Images/LCD2004.jpg) | HD44780 | LCD  | 20x4 character (each char 5x8) | I2C | https://github.com/duinoWitchery/hd44780 Note DO NOT use the PCF library above - it cannot handle setCursor on 4 line displays correctly | https://www.banggood.com/custlink/mG3EO6066Y |
-| ![](Images/LCD12864.jpg) | [ST7920](#ST7920) (Identifiable by pins labelled PSB/NC ) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/G3vY8zzr27 |
-| ![](Images/RepRapDiscount.jpg) | [ST7920 "RepRap Discount")](#ST7920) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/K33E9qkcUv |
-| ![](Images/RepRapDiscountSmartController.jpg) | [ST7920 "RepRap Discount Smart Controller")] | LCD | 20x4 character | SPI | LiquidCrystal | https://www.banggood.com/custlink/mGvd428bCG |
-| ![](Images/ANet.jpg) | [ST7920 ("ANet")](#ST7920) | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/3KGYiMkCzy |
-| ![](Images/OLED91.jpg) | SSD1306 | OLED | 128x32  | I2C | https://github.com/lexus2k/lcdgfx | https://www.banggood.com/custlink/v3KEAtAPYE |
-| ![](Images/OLED96.jpg) | SSD1306 | OLED | 128x64 | I2C | https://github.com/lexus2k/lcdgfx | https://www.banggood.com/custlink/GG3yNFn5Rp |
-| ![](Images/eInk.jpg) | e-Ink  | e-Ink | Variable | SPI | https://github.com/ZinggJM/GxEPD2 or https://github.com/waveshare/e-Paper | https://www.banggood.com/custlink/33vdN5b5yj |
+| ![](Images/MAX7219.jpg) | MAX7219 | 5V | 7-segment  | 8-digit | Serial (similar to, but not quite SPI!) | https://github.com/wayoda/LedControl |  |
+| ![](Images/MAX7219_matrix.jpg) | MAX7219 | 5V | 8x8 | 8x8 | Serial (but note: cannot share an SPI interface!) | https://github.com/MajicDesigns/MD_MAX72XX (can be extended with https://github.com/MajicDesigns/MD_Parola ) | https://www.banggood.com/custlink/GDvKsgCMKm |
+| ![](Images/LCD1602.jpg) | PCF8574 | ? | LCD | 16x2 character (each char 5x8) | I2C (PCF8574A is 0x3F, PCF8574 is 0x27) | https://github.com/mathertel/LiquidCrystal_PCF8574 | https://www.banggood.com/custlink/vDKEsPbVKw |
+| ![](Images/LCD2004.jpg) | HD44780 | ? | LCD  | 20x4 character (each char 5x8) | I2C | https://github.com/duinoWitchery/hd44780 Note DO NOT use the PCF library above - it cannot handle setCursor on 4 line displays correctly | https://www.banggood.com/custlink/mG3EO6066Y |
+| ![](Images/LCD12864.jpg) | [ST7920](#ST7920) (Identifiable by pins labelled PSB/NC ) | ? | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/G3vY8zzr27 |
+| ![](Images/RepRapDiscount.jpg) | [ST7920 "RepRap Discount")](#ST7920) | ? | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/K33E9qkcUv |
+| ![](Images/RepRapDiscountSmartController.jpg) | [ST7920 "RepRap Discount Smart Controller")] | ? | LCD | 20x4 character | SPI | LiquidCrystal | https://www.banggood.com/custlink/mGvd428bCG |
+| ![](Images/ANet.jpg) | [ST7920 ("ANet")](#ST7920) | ? | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/3KGYiMkCzy |
+| ![](Images/OLED96.jpg) | SSD1306 | 3.3V | OLED | 128x64 | I2C | https://github.com/lexus2k/lcdgfx | https://www.banggood.com/custlink/GG3yNFn5Rp |
+| ![](Images/OLED91.jpg) | SSD1306 | 3.3V | OLED | 128x32  | I2C | https://github.com/lexus2k/lcdgfx | https://www.banggood.com/custlink/v3KEAtAPYE |
+| ![](Images/OLED049.jpg)  | 0.49" SSD1306 | 3.3V | OLED | 64x32 | I2C | https://github.com/olikraus/u8g2 (using U8G2_SSD1306_64X32_1F_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);  constructor) | https://www.aliexpress.com/item/1005003874700775.html |
+| ![](Images/eInk.jpg) | e-Ink  | 3.3V | e-Ink | Variable | SPI | https://github.com/ZinggJM/GxEPD2 or https://github.com/waveshare/e-Paper | https://www.banggood.com/custlink/33vdN5b5yj |
 | ![](Images/tft.jpg) | ILI9486 | TFT | Variable | 8-bit parallel | https://github.com/prenticedavid/MCUFRIEND_kbv | https://www.banggood.com/custlink/mvGEn5n5ds |
-| ![](Images/HP5082-7405.jpg) | HP5082-74xx | GaAsP | 7-segment | 8-bit strobed | https://github.com/wayoda/LedControl |  |
-| ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 or https://github.com/olikraus/u8g2 (using constructor U8G2_PCD8544_84X48_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 25, /* data=*/ 26, /* cs=*/ 12, /* dc=*/ 27, /* reset=*/ 14);  // Nokia 5110 Display)| https://www.aliexpress.com/item/32621869484.html |
-| ![](Images/LEDbargraph.jpg) | LED Bargraph | LED | N/A | N/A | N/A | https://www.sparkfun.com/products/9935 |
-| ![](Images/OLED049.jpg)  | 0.49" SSD1306 | OLED | 64x32 | I2C | https://github.com/olikraus/u8g2 (using U8G2_SSD1306_64X32_1F_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);  constructor) | https://www.aliexpress.com/item/1005003874700775.html |
-| ![](Images/TFT_13.jpg)  | 1.3" ST7789 | TFT | 240x240 | SPI | https://github.com/Bodmer/TFT_eSPI | https://www.aliexpress.com/item/1005006532468602.html |
+| ![](Images/HP5082-7405.jpg) | ? | HP5082-74xx | GaAsP | 7-segment | 8-bit strobed | https://github.com/wayoda/LedControl |  |
+| ![](Images/Nokia-5110-LCD.jpg) | PCD8544 | 3.3V | LCD | 84x48 | SPI | https://github.com/carlosefr/pcd8544 or https://github.com/olikraus/u8g2 (using constructor U8G2_PCD8544_84X48_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 25, /* data=*/ 26, /* cs=*/ 12, /* dc=*/ 27, /* reset=*/ 14);  // Nokia 5110 Display)| https://www.aliexpress.com/item/32621869484.html |
+| ![](Images/LEDbargraph.jpg) | ?V | LED Bargraph | LED | N/A | N/A | N/A | https://www.sparkfun.com/products/9935 |
+| ![](Images/TFT_13.jpg)  | 1.3" ST7789 | 3.3/5V | TFT | 240x240 | SPI | https://github.com/Bodmer/TFT_eSPI | https://www.aliexpress.com/item/1005006532468602.html |
 
 
 # MAX7219 Matrix
