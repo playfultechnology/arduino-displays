@@ -10,7 +10,7 @@ Libaries, wiring, and example code for various small displays used with Arduino 
 | ![](Images/MAX7219_matrix.jpg) | MAX7219 | 5V | 8x8 | 8x8 | Serial (but note: cannot share an SPI interface!) | https://github.com/MajicDesigns/MD_MAX72XX (can be extended with https://github.com/MajicDesigns/MD_Parola ) | https://www.banggood.com/custlink/GDvKsgCMKm |
 | ![](Images/LCD1602.jpg) | PCF8574 | 5V | LCD | 16x2 character (each char 5x8) | I2C (PCF8574A is 0x3F, PCF8574 is 0x27) | https://github.com/mathertel/LiquidCrystal_PCF8574 | https://www.banggood.com/custlink/vDKEsPbVKw |
 | ![](Images/LCD2004.jpg) | HD44780 | 5V | LCD  | 20x4 character (each char 5x8) | I2C | https://github.com/duinoWitchery/hd44780 Note DO NOT use the PCF library above - it cannot handle setCursor on 4 line displays correctly | https://www.banggood.com/custlink/mG3EO6066Y |
-| ![](Images/LCD12864.jpg) | [ST7920](#ST7920) (Identifiable by pins labelled PSB/NC ) | 3.3V/5V | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_F_SW_SPI u8g2(U8G2_R0, /* clock=*/ 13, /* data=*/ 11, /* CS=*/ 10, /* reset=*/ 8); )| https://www.banggood.com/custlink/G3vY8zzr27 |
+| ![](Images/LCD12864.jpg) | [ST7920](#ST7920) (Identifiable by pins labelled PSB/NC ) | 3.3V/5V | LCD | 128x64 | SPI (but cannot share interface! See https://forum.arduino.cc/t/u8glib2-issues-with-st7920-128-64-with-arduino-mega/691999/8 | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_F_SW_SPI u8g2(U8G2_R0, /* clock=*/ 13, /* data=*/ 11, /* CS=*/ 10, /* reset=*/ 8); )| https://www.banggood.com/custlink/G3vY8zzr27 |
 | ![](Images/RepRapDiscount.jpg) | [ST7920 "RepRap Discount")](#ST7920) | ? | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/K33E9qkcUv |
 | ![](Images/RepRapDiscountSmartController.jpg) | [ST7920 "RepRap Discount Smart Controller")] | ? | LCD | 20x4 character | SPI | LiquidCrystal | https://www.banggood.com/custlink/mGvd428bCG |
 | ![](Images/ANet.jpg) | [ST7920 ("ANet")](#ST7920) | ? | LCD | 128x64 | SPI | https://github.com/olikraus/u8g2 (using constructor as U8G2_ST7920_128X64_1_HW_SPI u8g2(U8G2_R0, 10, 8); )| https://www.banggood.com/custlink/3KGYiMkCzy |
@@ -65,10 +65,16 @@ The only last remaining problem is to get the correct polarity for the bar graph
  - 1025G (Green), _cathodes_ are on the labelled side!
  - HSN-2510BG (Green), _anodes_ are on the labelled side
 
-# ST7920
+# Graphic Displays (e.g. 128x64)
 The Sitronix ST7920 chip is a popular controller chip used to 128x64 LCD panels. It can be controlled via either parallel or serial (SPI) interface (selectable via the PSB/NC pin), but serial is significantly easier to implement! Since the board sends no data back to the controller, there is no need for a MISO pin to connect for the SPI interface - just MOSI, CLK, and SS, along with 5V and GND for the display controller and also the backlight, and an optional reset pin.
 
+DO NOT be tempted to buy an "I2C convertor", such as this: https://www.aliexpress.com/item/1005006695581586.html
+That board uses an MCP23017 GPIO expander to address the pins of the LCD in 8-bit parallel mode (which is in theory faster). But, seeing as the MCP23017 must be controlled via I2C at 400kHz, this ends up being slower and more complicated than if you'd just used the LCD in SPI mode! 
+
 You can't share ST7920 with other SPI devices on the HW SPI bus, so you may as well use software serial SW SPI (bit-banging) (See https://forum.arduino.cc/t/u8glib2-issues-with-st7920-128-64-with-arduino-mega/691999/3)
+
+Use u8g2 library, with the following constructor:
+```U8G2_ST7920_128X64_F_SW_SPI u8g2(U8G2_R0, /* clock=*/ 13, /* data=*/ 11, /* CS=*/ 10, /* reset=*/ 8);```
 
 According to the <a href="https://www.waveshare.com/datasheet/LCD_en_PDF/ST7920.pdf>datasheet</a> (see table p33/42), the ST7920 requires a HIGH signal to be 0.7*VDD. 
 Empirically, the ST7920 chip itself will operate at 3.3V logic, BUT the crystals require at least 4.5V on Vdd to activate. However, the SPI lines can be run from an ESP32 or other 3.3V microprocessor just fine without the need for any level conversion.
