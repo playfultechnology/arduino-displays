@@ -73,8 +73,9 @@ That board uses an MCP23017 GPIO expander to address the pins of the LCD in 8-bi
 
 You can't share ST7920 with other SPI devices on the HW SPI bus, so you may as well use software serial SW SPI (bit-banging) (See https://forum.arduino.cc/t/u8glib2-issues-with-st7920-128-64-with-arduino-mega/691999/3)
 
-Use u8g2 library, with the following constructor:
-```U8G2_ST7920_128X64_F_SW_SPI u8g2(U8G2_R0, /* clock=*/ 13, /* data=*/ 11, /* CS=*/ 10, /* reset=*/ 8);```
+Use u8g2 library, together with any 3 available GPIO pins, with the following constructor:
+
+```U8G2_ST7920_128X64_F_SW_SPI u8g2(U8G2_R0, /* E=*/ 13, /* R/W=*/ 11, /* RS=*/ 10, /* reset=*/ -1);```
 
 According to the <a href="https://www.waveshare.com/datasheet/LCD_en_PDF/ST7920.pdf>datasheet</a> (see table p33/42), the ST7920 requires a HIGH signal to be 0.7*VDD. 
 Empirically, the ST7920 chip itself will operate at 3.3V logic, BUT the crystals require at least 4.5V on Vdd to activate. However, the SPI lines can be run from an ESP32 or other 3.3V microprocessor just fine without the need for any level conversion.
