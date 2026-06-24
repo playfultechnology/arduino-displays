@@ -36,7 +36,7 @@ Here's a bunch of 7-segment displays from my parts drawer. It's *generally* poss
 | Part Num | Size | Colour | Type | Link |
 | -------------- | ------------- | ------------- | ------------- | ------------- |
 | SH18101BS | 1.8" (46mm) | Red | Common Anode | https://www.yoycart.com/Product/572970879988/ |
-| FJS15102BH | 1.5" (38.1mm) | Red | Common Anode | 4V, 20mA, https://www.thegioiic.com/fjs15102bh-led-7-doan-1-5inch-do-1-so-duong-chung |
+| FJS15102BH | 1.5" (38.1mm) | Red | Common Anode | 4V, 20mA, https://www.harfington.com/products/p-1369505 |
 | 5611BH | 0.56" (14mm) | Red | Common Anode | 1.8V, 30mA, http://www.xlitx.com/datasheet/5611BH.pdf |
 | 5611AH | 0.56" (14mm) | Red | Common Cathode | 1.8V, 30mA, http://www.xlitx.com/datasheet/5611AH.pdf |
 | KW1-562CYB | 0.56" (14mm) | Orange | Common Cathode | 2.4V, 20mA, http://datasheets.leedshackspace.org.uk/KW1-562CYB.txt |
